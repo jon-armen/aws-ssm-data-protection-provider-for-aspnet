@@ -33,12 +33,12 @@ jobs:
             dotnet-version: '3.1.x'
 
         - name: Install dependencies
-          run: dotnet restore SSMDataProtectionProvider.sln
+          run: dotnet restore
 
         - name: Build solution
-          run: dotnet build SSMDataProtectionProvider.sln --configuration Release --no-restore
+          run: dotnet build --configuration Release --no-restore
 
         - name: Run tests
           run: >-
-            dotnet test SSMDataProtectionProvider.sln --framework ${{matrix.version}} --no-build
+            dotnet test --framework ${{matrix.version}} --no-build
             --logger "console;verbosity=detailed"
