@@ -33,12 +33,12 @@ jobs:
             dotnet-version: '3.1.x'
 
         - name: Install dependencies
-          run: dotnet restore
+          run: dotnet restore SSMDataProtectionProvider.sln
 
         - name: Build solution
-          run: dotnet build --configuration Release --no-restore
+          run: dotnet build SSMDataProtectionProvider.sln --configuration Release --no-restore
 
         - name: Run tests
           run: >-
-            dotnet test --framework ${{matrix.version}} --no-build
+            dotnet test test/Amazon.AspNetCore.DataProtection.SSM.Tests/bin/Release/${{matrix.version}}/Amazon.AspNetCore.DataProtection.SSM.Tests.dll
             --logger "console;verbosity=detailed"
